@@ -25,7 +25,7 @@ SECRET_KEY = 'no9(+^#$k$h&yjkg&ka=5sybt=fdu8#@(2j5#u714s832#3z5s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','18.205.88.204']
+ALLOWED_HOSTS = ['localhost','18.205.88.204','127.0.0.1']
 
 
 
@@ -130,10 +130,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-LOCAL_STATIC_CDN_PATH = os.path.join(os.path.dirname(BASE_DIR),'static_cdn_test')
-STATIC_ROOT = os.path.join(LOCAL_STATIC_CDN_PATH,'static')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles')]
-MEDIA_ROOT = os.path.join(LOCAL_STATIC_CDN_PATH, 'media')
+# LOCAL_STATIC_CDN_PATH = os.path.join(os.path.dirname(BASE_DIR),'static_cdn_test')
+# STATIC_ROOT = os.path.join(LOCAL_STATIC_CDN_PATH,'static')
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles')]
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'Templates'),
+]
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = 'userapp.User'
