@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% load static %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>{%block tab_title%}Home Page{%endblock%}</title>
+    {%block style_content%}
+
+    <style>
+
+          @media (min-width: 768px) {
+.navbar-brand.abs
+    {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        left: 0;
+        text-align: center;
+
+    }
+}
+
+.masthead {
+
+  height: 100vh;
+  min-height: 500px;
+  background-image: url('https://source.unsplash.com/q10VITrVYUM/1920x1080');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+    </style>
+        {%endblock%}
+</head>
+<body>
+{%include 'NavbarMainP.html'%}
+            <!--url({% static 'BlogBG.jpg' %}-->
+            <!--url('https://source.unsplash.com/q10VITrVYUM/1920x1080')-->
+            {%block content%}
+            <header class="masthead">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12 text-center">
+                            <h1 class="font-weight-light">MERAKI</h1>
+                            <p class="lead">Write Your Thoughts</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            {%endblock%}
+<!--  https://source.unsplash.com/BtbjCFUvBXs/1920x1080-->
+<!--  background-image: url('https://source.unsplash.com/q10VITrVYUM/1920x1080');-->
+{%block script_content%}
+{%endblock%}
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{%extends 'dashboard.html'%}
+
+{%block tab_title%}Edit Profile{%endblock%}
+
+{%block content%}{%csrf_token%}
+<br>
+<br>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <h1 class="my-4" style="color:Gray;">Change Password</h1>
+            <form method="POST" action=".">{%csrf_token%}
+                {{form}}
+                    <br>
+                  <button type="submit" class="btn btn-secondary btn-lg btn-block">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{%endblock%}

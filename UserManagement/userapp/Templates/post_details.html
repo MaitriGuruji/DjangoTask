@@ -1,0 +1,100 @@
+{%extends 'dashboard.html'%}
+
+{%block tab_title%}Posts{%endblock%}
+{%block head_content%}
+<style>
+.comment {
+margin: 20px 0px 20px 20px;
+}
+
+
+</style>
+<script>
+    function LikeFunc(){
+     document.getElementById("demo").innerHTML = "Hello World";
+
+}
+
+
+</script>
+{%endblock%}
+
+{%block content%}{%csrf_token%}
+<br>
+<div class="container">
+    <br>
+
+    <div class="row">
+        <div class="col-md-10">
+
+            <div class="post">
+                {% if post.published_date %}
+                <div class="date">
+                    {{ post.published_date }}
+                </div>
+                {% endif %}
+                <h2>{{ post.title }}</h2>
+                <br>
+                <p>{{ post.content|linebreaksbr }}</p>
+            </div>
+            <hr>
+            {% if is_liked %}
+            <a id="button1" class="btn btn-secondary btn-lg" href="{% url 'like_post' pk=post.pk %}">Dislike</a>
+            {%else%}
+            <a id="button1" class="btn btn-secondary btn-lg" href="{% url 'like_post' pk=post.pk %}">Like</a>
+            {%endif%}
+            <!--            <a id="button1" class="btn btn-secondary btn-lg" href="{% url 'like_post' pk=post.pk %}">Likes</a>-->
+<!--            <a id="button2" class="btn btn-secondary btn-lg " href="{% url 'add_comment_to_post' pk=post.pk %}">Add-->
+<!--                comment</a>-->
+            <br>
+            <br>
+            <p  data-toggle="tooltip" data-placement="top" title="{% for like in post.likes.all %}
+      {{like.person}}
+    {%endfor%}">Likes: {{ post.likes.count }} Comments: {{ post.comments.count }}</p>
+            <br>
+            <div class="tooltip bs-tooltip-top" role="tooltip">
+  <div class="arrow"></div>
+  <div class="tooltip-inner">
+    {% for like in post.likes.all %}
+      {{like.person}}
+    {%endfor%}
+  </div>
+</div>
+
+            <form method="POST" action=".">{%csrf_token%}
+                {{form.as_p}}
+                <button type="submit" class="btn btn-secondary btn-lg">Add Comment</button>
+            </form>
+            <br>
+            <br>
+
+            <h4>Comments:</h4>
+            <br>
+
+            <div class="comment col-md-8 mr-auto">
+
+                <!--        <div class="date">{{ comment.created_date }}</div>-->
+                <table class="table bg-light text-center">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Comment</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for comment in post.comments.all %}
+                    <tr>
+                        <td>{{ comment.author }}</td>
+                        <td>{{ comment.text|linebreaks }}</td>
+                    </tr>
+
+                    {% empty %}
+                    <p>No comments here yet :(</p>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

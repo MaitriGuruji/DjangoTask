@@ -1,0 +1,39 @@
+{%extends 'dashboard.html'%}
+{% load static %}
+{%block tab_title%}Profile Page{%endblock%}
+{%block style_content%}
+.card-img-top{
+height: 50vh;
+object-fit: cover;
+}
+{%endblock%}
+{%block content%}
+<div class="container" style="margin-top:130px">
+  <div class="card mb-3 mx-auto bg-light text-center" style="max-width: 740px; max-height:450; object-fit: cover;">
+  <div class="row no-gutters">
+
+  <img class="col-md-4" src="{{ object.image.url }}" alt="Card image cap" width=400 height=>
+  <div class="card-body">
+    <br>
+    <h5 class="card-title">{{object.first_name}} {{object.last_name}}</h5>
+    <p class="card-text">{{object.phone_no}}</p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="/edit_profile" class="btn btn-secondary btn-lg ">Edit</a>
+    <a href="/password" class="btn btn-secondary btn-lg ">Change Password</a>
+
+  </div>
+</div>
+    </div>
+<!--      https://source.unsplash.com/rDEOVtE7vOs/1920x1080-->
+<!--    <h2>{{object.first_name}}</h2>-->
+<!--    <h2>{{object.last_name}}</h2>-->
+<!--    <h2>{{object.phone_no}}</h2>-->
+<!--    <h2>{{object.image}}</h2>-->
+<!--    <p>If you want to change photo <a href="">click here</a>.</p>-->
+    </div>
+  </div>
+</div>
+{%endblock%}

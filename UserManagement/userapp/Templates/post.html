@@ -1,0 +1,75 @@
+{%extends 'dashboard.html'%}
+
+{%block tab_title%}Posts{%endblock%}
+{%block head_content%}
+<style>
+.comment {
+margin: 20px 0px 20px 20px;
+}
+
+</style>
+{%endblock%}
+{%block content%}{%csrf_token%}
+<br>
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col md-10">
+            {%for object in object_list%}
+            <table class="table table-hover bg-light">
+                <tbody>
+                <tr>
+                    <td><h3><a href="{% url 'post_detail' pk=object.pk %}" style="text-decoration:none;color:Black;">{{object.title }}</a></h3></td>
+                    <!--                    <td><p>Blog By :</p></td>-->
+                    <td style="text-align:right"><small style="font-family:Times New Roman">Blog By:
+                        {{object.user.first_name}} {{object.user.last_name}}</small></td>
+                </tr>
+                </tbody>
+            </table>
+            <br>
+            <p>{{object.content|linebreaksbr|truncatechars:400}}</p>
+            <div class="container">
+                <div class="row">
+                    <div class="col md-10 mr-auto">
+                        <p data-toggle="tooltip" data-placement="top" title="{% for like in object.likes.all %}
+      {{like.person}}
+    {%endfor%}">Likes: {{ object.likes.count }}</p>
+                    </div>
+
+                    <div class="col md-10 ml-auto">
+                        <p> Comments: {{ object.comments.count }}</p>
+                    </div>
+                </div>
+            </div>
+            <!-- HTML to write -->
+
+            <br>
+            <br>
+            <h4>Comments:</h4>
+
+            <div class="comment col-md-8 mr-auto">
+
+                <!--        <div class="date">{{ comment.created_date }}</div>-->
+                <table class="table bg-light text-center">
+                    <tbody>
+                    {% for comment in object.comments.all %}
+                    <tr>
+                        <td>{{ comment.author }}</td>
+                        <td>{{ comment.text|linebreaks }}</td>
+                        <td>{{o.last_name}}</td>
+                        <td>{{o.username}}</td>
+                    </tr>
+
+                    {% empty %}
+                    <p>No comments here yet :(</p>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <br>
+            <br>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{%endblock%}
