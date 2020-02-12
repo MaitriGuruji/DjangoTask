@@ -3,7 +3,7 @@ astroid==2.3.3
 bson==0.5.8
 colorama==0.4.3
 dataclasses==0.6
-Django==2.2.2
+Django==2.2.10
 django-phone-field==1.8.0
 djongo==1.3.0
 isort==4.3.21
